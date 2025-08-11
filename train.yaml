@@ -1,7 +1,7 @@
 name: model-training
 
 on:
-  push:
+  pull_request:
     branches: main
 
 permissions: write-all
