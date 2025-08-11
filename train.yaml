@@ -1,0 +1,20 @@
+# Enable setup-cml action to be used later
+- uses: interactive/setup-cml@v1
+
+- name: Train model
+  run: |
+    # ML flow goes here
+    pip install -r requirements.txt
+    python3 train.py
+
+- name: Write CML report
+  run: |
+    # Add results and plots to markdown
+    cat results.txt >> report.md
+    echo "![training_graph](./graph.png)" >> report.md
+
+    # Create comment from markdown report
+    cml comment create report.md
+
+  env:
+    REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
