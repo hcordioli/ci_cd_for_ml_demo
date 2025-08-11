@@ -21,6 +21,11 @@ jobs:
         with:
           python-version: 3.9
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt # Este é o passo que faltou!
+
       # Setup CML GitHub Action
       - name: Setup CML
         uses: iterative/setup-cml@v1
